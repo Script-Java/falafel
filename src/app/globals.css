@@ -10,18 +10,3 @@
   themes: valentine --default;
 }
 
-/*
- * To customize an existing theme (like "valentine"),
- * use the @plugin "daisyui/theme" block for it.
- * Note the 'name' property inside this block.
- */
-@plugin "daisyui/theme" {
-  name: "valentine"; /* Name of the theme you are customizing */
-  default: true;     /* If you want this to be the default */
-  prefersdark: false; /* If you want this to be the prefers-dark theme */
-  
-  /* Override or add any CSS variables for the 'valentine' theme */
-  --color-primary: oklch(55% 0.3 240); 
-  --color-base-100: oklch(98% 0.02 240);
-  /* ... and so on for other variables you want to change for 'valentine' */
-}
