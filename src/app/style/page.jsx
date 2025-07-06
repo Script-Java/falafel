@@ -10,13 +10,13 @@ export default function Style() {
       name: "Cornrows",
       description: "Classic tight braids close to the scalp, arranged in straight or intricate patterns.",
       time: "2-4 hours",
-      price: "$50-$150"
+      price: "$80-$150"
     },
     {
       name: "Box Braids",
       description: "Individual plaits sectioned into square or triangular parts.",
       time: "4-8 hours",
-      price: "$100-$300"
+      price: "$160-$300"
     },
     {
       name: "Senegalese Twists",
@@ -31,70 +31,65 @@ export default function Style() {
       price: "$100-$250"
     },
     {
-      name: "Goddess Locs",
-      description: "Faux locs with a softer, more bohemian look, often adorned with jewels or beads.",
-      time: "6-10 hours",
-      price: "$200-$450"
-    },
-    {
       name: "Passion Twists",
       description: "Twists created with wavy, passion twist hair extensions for a natural, curly appearance.",
       time: "4-6 hours",
-      price: "$150-$300"
+      price: "$180-$300"
     },
     {
       name: "Micro Braids",
       description: "Tiny, delicate braids that offer versatility and can be styled in various ways.",
       time: "6-12 hours",
-      price: "$200-$500"
-    },
-    {
-      name: "Ghana Braids",
-      description: "Feed-in cornrows that gradually increase in size and thickness as they extend towards the nape of the neck.",
-      time: "3-6 hours",
-      price: "$80-$200"
-    },
-    {
-      name: "Dutch Braids",
-      description: "A variation of the classic cornrow, braided with a three-strand technique that creates a more pronounced, raised appearance.",
-      time: "2-4 hours",
-      price: "$50-$150"
+      price: "$180-$500"
     },
     {
       name: "Lemonade Braids",
       description: "Side-swept cornrows popularized by Beyoncé, often featuring intricate patterns and designs.",
       time: "4-6 hours",
-      price: "$100-$250"
+      price: "$150-$250"
     },
     {
       name: "Fulani Braids",
       description: "A combination of cornrows and single braids, often adorned with beads and inspired by the Fulani people of West Africa.",
       time: "4-6 hours",
-      price: "$100-$250"
+      price: "$180-$250"
     },
     {
-      name: "Knotless Box Braids",
+  name: "Crochet Braids",
+  description: "A versatile and protective style where pre-looped extensions are crocheted into your natural hair. Quick to install, low-maintenance, and perfect for switching up your look with minimal tension.",
+  time: "2–4 hours",
+  price: "$100–$180"
+},
+{
+  name: "Sew-In Weave",
+  description: "A timeless method where hair extensions are sewn into neatly braided tracks, giving you a full, natural look with plenty of styling options. Ideal for adding volume, length, or trying something bold.",
+  time: "3–5 hours",
+  price: "$150–$300"
+},
+
+    {
+      name: "Knotless Braids",
       description: "A variation of box braids that starts with your natural hair, gradually incorporating extensions for a seamless, knotless appearance.",
       time: "5-8 hours",
-      price: "$150-$350"
+      price: "$180-$350"
     },
     {
-      name: "Yarn Braids",
-      description: "Braids created with yarn, offering a wide variety of colors and a unique, playful look.",
-      time: "4-6 hours",
-      price: "$100-$250"
+      name: "Bohemian Knotless Braids",
+      description: "Effortlessly chic and lightweight, these knotless braids blend natural hair with extensions for a smooth, tension-free finish. Perfect for a carefree, boho vibe with long-lasting style and comfort.",
+      time: "5–8 hours",
+      price: "$180–$350"
     },
     {
       name: "Tree Braids",
       description: "A protective style that combines cornrows and individual braids, leaving the majority of the hair extensions free and unbraided.",
       time: "4-6 hours",
-      price: "$150-$300"
+      price: "$180-$300"
     },
     {
       name: "Nubian Twists",
       description: "Short, tight twists created with Nubian hair extensions for a textured, coiled appearance.",
       time: "4-6 hours",
-      price: "$100-$250"
+      price: "$180-$250"
     }
   ];
 

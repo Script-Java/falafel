@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-purple-700 max-w-screen-xl mx-auto pt-6 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-sm">© Copyright 2025 - Asam African Hair Braiding | All rights reserved</p>
+        <p className="text-sm">© Copyright 2025 - Braids By Parky | All rights reserved</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
           <Link href="https://www.facebook.com/Asambraids"><FaFacebookF className="hover:text-pink-300 transition" /></Link>
           <Link href="https://www.instagram.com/explore/locations/1071250532891743/asam-african-hair-braiding-garland-texas/"><FaInstagram className="hover:text-pink-300 transition" /></Link>
