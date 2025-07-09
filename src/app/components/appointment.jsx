@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarCheck, FaClock, FaPhoneAlt, FaStar } from "react-icons/fa";
-import appointmentImg from "../assets/gallery/a.jpg";
+import appointmentImg from "../assets/gallery/14.jpg";
 
 export default function Appointment() {
   return (
