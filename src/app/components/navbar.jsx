@@ -1,64 +1,127 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useState } from "react";
 import Image from "next/image";
-import logo from "../assets/logo/logo.png";
+import logo from "../assets/logo/logo.png"; // Make sure this path is correct
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Navigation links for the overlay menu
+  const navLinks = [
+    { title: "Menu", href: "/menu" },
+    { title: "Events", href: "/events" },
+    { title: "Gallery", href: "/gallery" },
+    { title: "Hire us", href: "/hire" },
+  ];
+
+  // Effect to detect scroll and change navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set scrolled state to true if user scrolls down more than 10px
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    // Add event listener when component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Prevent body scroll when the overlay menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    // Cleanup function
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+  }, [menuOpen]);
+
 
   return (
-    <nav className="w-full bg-black text-white shadow-md">
-      <div className="max-w-screen-xl mx-auto flex justify-between items-center px-4 py-6 relative">
-        {/* Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-          <Link href="/">
-            <Image src={logo} alt="Logo" width={160} height={80} priority />
-          </Link>
-        </div>
-
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex gap-8 uppercase text-sm">
-          <Link href="/">HOME</Link>
-          <Link href="/about">About</Link>
-          <Link href="/style">Style</Link>
-          <Link href="/gallery">Gallery</Link>
-          <Link href="https://www.google.com/maps/place/Asam+African+Hair+Braiding/">Google Reviews</Link>
-        </div>
-
-        {/* Book Now Button */}
-        <div className="hidden sm:flex">
-          <Link href="https://salomeamama.setmore.com/">
-            <button className="btn btn-primary px-6 py-2 font-semibold text-sm uppercase">Book Now</button>
-          </Link>
-        </div>
-
-        {/* Mobile Menu Icon */}
-        <div className="lg:hidden z-30">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white text-2xl focus:outline-none"
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
-        </div>
-      </div>
-
-      {/* Dropdown Menu (Mobile) */}
-      <div
-        className={`transition-all duration-300 overflow-hidden lg:hidden bg-black px-6 text-sm uppercase text-white ${menuOpen ? "max-h-96 py-4" : "max-h-0 py-0"}`}
+    <>
+      {/* --- Main Navigation Bar --- */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+          isScrolled ? "bg-black shadow-lg" : "bg-transparent"
+        }`}
       >
-        <div className="flex flex-col gap-3">
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link href="/style" onClick={() => setMenuOpen(false)}>Style</Link>
-          <Link href="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
-          <Link href="https://salomeamama.setmore.com/">
-            <button className="btn btn-outline w-full mt-3">Book Now</button>
-          </Link>
+        <div className="navbar max-w-screen-xl mx-auto">
+          {/* Logo */}
+          <div className="navbar-start">
+            <Link href="/" className="bg-primary h-auto p-0 rounded-xl">
+              <Image src={logo} alt="Falafel & Fin Food Truck Logo" width={140} style={{ objectFit: 'contain' }} priority />
+            </Link>
+          </div>
+
+          {/* Menu Icon and Hire Us Button */}
+          <div className="navbar-end">
+            <Link href="/hire" className="hidden sm:inline-flex">
+                <button className="btn btn-primary bg-yellow-400 text-black hover:bg-yellow-500 border-none normal-case mr-2">
+                Hire Us
+                </button>
+            </Link>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="btn btn-accent btn-circle"
+              aria-label="Open menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* --- Full-Screen Overlay Menu --- */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 z-[100] flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="btn btn-ghost btn-circle absolute top-5 right-5 text-white"
+          aria-label="Close menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        {/* Navigation Links */}
+        <div className="text-center">
+            <ul className="space-y-8">
+                {navLinks.map((link) => (
+                    <li key={link.href}>
+                        <Link 
+                            href={link.href} 
+                            onClick={() => setMenuOpen(false)}
+                            className="text-white text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
+                        >
+                            {link.title}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+            <Link href="/catering" onClick={() => setMenuOpen(false)} className="sm:hidden mt-12 inline-block">
+                <button className="btn btn-primary btn-lg bg-yellow-400 text-black hover:bg-yellow-500 border-none normal-case">
+                    Hire Us
+                </button>
+            </Link>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

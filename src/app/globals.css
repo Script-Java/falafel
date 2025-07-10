@@ -7,6 +7,6 @@
  * Here, we only include 'valentine'.
  */
 @plugin "daisyui" {
-  themes: valentine --default;
+  themes: bumblebee --default;
 }
 

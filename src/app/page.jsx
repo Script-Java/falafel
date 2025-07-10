@@ -1,22 +1,18 @@
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
-import Work from "./components/work";
-import Reviews from "./components/reviews";
+import LocationSection from "./components/location";
+import SignatureEatsSection from "./components/signature";
+import OurStorySection from "./components/story";
 import Footer from "./components/footer";
-import Appointment from "./components/appointment";
-import SetmoreWidget from "./components/setmoreWidget";
-import MapSection from "./components/maps";
 
 export default function Home() {
   return (
     <main className="font-serif">
       <Navbar />
       <Hero />
-      <Work />
-      <Reviews />
-      <Appointment />
-      <MapSection />
-      <SetmoreWidget />
+      <LocationSection />
+      <SignatureEatsSection />
+      <OurStorySection />
       <Footer />
     </main>
   );

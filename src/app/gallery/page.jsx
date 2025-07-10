@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import SetmoreCalendar from "../components/setmoreWidget";
-import MapSection from "../components/maps";
 import Image from "next/image";
+import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
+
+// --- IMPORT YOUR GALLERY IMAGES ---
 import img1 from "../assets/gallery/1.jpg";
 import img2 from "../assets/gallery/2.jpg";
 import img3 from "../assets/gallery/3.jpg";
@@ -17,69 +21,115 @@ import img11 from "../assets/gallery/11.jpg";
 import img12 from "../assets/gallery/12.jpg";
 import img13 from "../assets/gallery/13.jpg";
 import img14 from "../assets/gallery/14.jpg";
-import img15 from "../assets/gallery/15.jpg";
-import img16 from "../assets/gallery/16.jpg";
-import img17 from "../assets/gallery/17.jpg";
-import img18 from "../assets/gallery/18.jpg";
-import img19 from "../assets/gallery/19.jpg";
-import img20 from "../assets/gallery/20.jpg";
-import img21 from "../assets/gallery/21.jpg";
-import img22 from "../assets/gallery/22.jpg";
-import img23 from "../assets/gallery/23.jpg";
-import img24 from "../assets/gallery/24.jpg";
-import img25 from "../assets/gallery/25.jpg";
-import img26 from "../assets/gallery/26.jpg";
-import img27 from "../assets/gallery/27.jpg";
-import img28 from "../assets/gallery/28.jpg";
-import img29 from "../assets/gallery/29.jpg";
-import img30 from "../assets/gallery/30.jpg";
-import img31 from "../assets/gallery/31.jpg";
-import img32 from "../assets/gallery/32.jpg";
-import img33 from "../assets/gallery/33.jpg";
-import img34 from "../assets/gallery/34.jpg";
 
-const images = [
-  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33, img34
+// Array of all imported images for easier mapping
+const galleryImages = [
+  { src: img1, span: "row-span-2" }, { src: img2 }, { src: img3 },
+  { src: img4 }, { src: img5, span: "row-span-2" }, { src: img6 },
+  { src: img7 }, { src: img8 }, { src: img9, span: "row-span-2" },
+  { src: img10 }, { src: img11 }, { src: img12 },
+  { src: img13, span: "row-span-2" }, { src: img14 }
 ];
 
-export default function Gallery() {
+
+export default function GalleryPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const showNextImage = () => {
+    setSelectedImageIndex((prevIndex) => (prevIndex + 1) % galleryImages.length);
+  };
+
+  const showPrevImage = () => {
+    setSelectedImageIndex((prevIndex) => (prevIndex - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   return (
     <>
       <Navbar />
-      <main className="py-20 max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center mb-20">
-          <h1 className="text-6xl font-extrabold mb-6 tracking-tight text-black">Our Hair Gallery</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover our signature braid styles through a stunning collection of client transformations. Every braid, twist, and part is a work of art crafted with precision, creativity, and passion.
-          </p>
-        </div>
+      <main className="bg-base-100 py-20 mt-64 sm:py-28">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold">
+              Food, Friends & <span className="text-primary">Good Times</span>
+            </h1>
+            <p className="mt-4 text-lg text-base-content/70 max-w-2xl mx-auto">
+              A collection of our delicious dishes, behind-the-scenes moments, and happy customers. This is what Falafel & Fin is all about.
+            </p>
+          </div>
 
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-2 md:px-0">
-          {images.map((img, idx) => (
-            <div
-              key={idx}
-              className="relative group overflow-hidden rounded-3xl shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500"
-            >
-              <Image
-                src={img}
-                alt={`Gallery Image ${idx + 1}`}
-                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
-                placeholder="blur"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-32">
-          <SetmoreCalendar />
-        </div>
-
-        <div className="mt-24">
-          <MapSection />
+          {/* Masonry Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className={`overflow-hidden rounded-2xl shadow-lg cursor-pointer group ${image.span || ''}`}
+                onClick={() => openModal(index)}
+              >
+                <Image
+                  src={image.src}
+                  alt={`Gallery image ${index + 1}`}
+                  placeholder="blur"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />
+
+      {/* Lightbox Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center">
+          <div className="relative w-full h-full max-w-4xl max-h-4/5">
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute -top-12 right-0 sm:top-0 sm:-right-12 text-white btn btn-ghost btn-circle"
+              aria-label="Close gallery"
+            >
+              <FaTimes size={24} />
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={showPrevImage}
+              className="absolute left-0 sm:-left-16 top-1/2 -translate-y-1/2 text-white btn btn-ghost btn-circle"
+              aria-label="Previous image"
+            >
+              <FaChevronLeft size={24} />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={showNextImage}
+              className="absolute right-0 sm:-right-16 top-1/2 -translate-y-1/2 text-white btn btn-ghost btn-circle"
+              aria-label="Next image"
+            >
+              <FaChevronRight size={24} />
+            </button>
+
+            {/* Image Display */}
+            <div className="w-full h-full flex items-center justify-center">
+               <Image
+                src={galleryImages[selectedImageIndex].src}
+                alt={`Enlarged gallery image ${selectedImageIndex + 1}`}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
