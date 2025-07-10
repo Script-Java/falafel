@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Braids by Parky",
-  description: "Your one-stop destination for beautiful braids",
+  title: "Falafel and Fin",
+  description: "Your one-stop destination for delicious falafel and fine dining",
 };
 
 export default function RootLayout({ children }) {
