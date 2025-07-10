@@ -14,35 +14,22 @@ export default function Navbar() {
     { title: "Menu", href: "/menu" },
     { title: "Events", href: "/events" },
     { title: "Gallery", href: "/gallery" },
-    { title: "Hire us", href: "/hire" },
   ];
 
   // Effect to detect scroll and change navbar background
   useEffect(() => {
     const handleScroll = () => {
-      // Set scrolled state to true if user scrolls down more than 10px
       setIsScrolled(window.scrollY > 10);
     };
-
-    // Add event listener when component mounts
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up event listener when component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when the overlay menu is open
+  // Effect to prevent body scroll when the overlay menu is open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    // Cleanup function
+    document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
     return () => {
-        document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'unset';
     };
   }, [menuOpen]);
 
@@ -58,8 +45,11 @@ export default function Navbar() {
         <div className="navbar max-w-screen-xl mx-auto">
           {/* Logo */}
           <div className="navbar-start">
-            <Link href="/" className="bg-primary h-auto p-0 rounded-xl">
-              <Image src={logo} alt="Falafel & Fin Food Truck Logo" width={140} style={{ objectFit: 'contain' }} priority />
+            <Link href="/" className="btn btn-primary h-auto p-0 hover:bg-transparent">
+              {/* Smaller logo for mobile screens */}
+              <Image src={logo} alt="Falafel & Fin Logo" width={100} className="lg:hidden" style={{ objectFit: 'contain' }} priority />
+              {/* Larger logo for desktop screens */}
+              <Image src={logo} alt="Falafel & Fin Food Truck Logo" width={140} className="hidden lg:block" style={{ objectFit: 'contain' }} priority />
             </Link>
           </div>
 
@@ -72,7 +62,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setMenuOpen(true)}
-              className="btn btn-accent btn-circle"
+              className="btn btn-primary btn-circle"
               aria-label="Open menu"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,11 +105,16 @@ export default function Navbar() {
                     </li>
                 ))}
             </ul>
-            <Link href="/catering" onClick={() => setMenuOpen(false)} className="sm:hidden mt-12 inline-block">
-                <button className="btn btn-primary btn-lg bg-yellow-400 text-black hover:bg-yellow-500 border-none normal-case">
+             {/* The "Hire Us" button is now also in the main nav links for consistency */}
+            <li className="list-none mt-8">
+                <Link 
+                    href="/hire" 
+                    onClick={() => setMenuOpen(false)}
+                    className="text-white text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
+                >
                     Hire Us
-                </button>
-            </Link>
+                </Link>
+            </li>
         </div>
       </div>
     </>
