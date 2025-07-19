@@ -25,7 +25,7 @@ const menuData = {
     {
       name: "Falafel Wrap",
       price: "$6.99",
-      description: "Crispy chickpea balls with tahini, assorted veggies & pickles all wrapped in a warm pita.",
+      description: "Crispy chickpea balls with tahini, assorted veggies & pickles all wrapped in a warm pita bread.",
       image: falafelWrapImg,
       isFavorite: true,
     },
@@ -61,7 +61,7 @@ const menuData = {
     {
       name: "Chicken Shawarma Sandwich",
       price: "$7.99",
-      description: "Thinly sliced marinated chicken in a pita with garlic sauce, onion, parsley, and pickles.",
+      description: "Thinly sliced marinated chicken in a pita bread with garlic sauce, onion, parsley, and pickles.",
       image: shawarmaWrapImg,
       isFavorite: true,
     },
