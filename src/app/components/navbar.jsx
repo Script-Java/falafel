@@ -38,7 +38,7 @@ export default function Navbar() {
           isScrolled ? "bg-black shadow-lg" : "bg-transparent"
         }`}
       >
-        <div className="navbar max-w-screen-xl mx-auto px-4">
+        <div className="navbar max-w-screen-xl mx-auto">
           {/* Logo */}
           <div className="navbar-start">
             <Link
