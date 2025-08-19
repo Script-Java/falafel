@@ -7,50 +7,7 @@ import { FaMapMarkerAlt, FaClock, FaCalendarCheck } from "react-icons/fa";
 // --- MOCK DATA FOR UPCOMING EVENTS ---
 // In a real app, you would fetch this data from a CMS or API.
 const upcomingEvents = [
-  {
-    id: 1,
-    month: "JUL",
-    day: "12",
-    dayOfWeek: "Saturday",
-    title: "McKinney Farmers Market",
-    location: "Chestnut Square Historic Park, McKinney, TX",
-    time: "9:00 AM - 1:00 PM",
-    description: "Catch us at our usual spot for your weekend falafel fix! We'll have the full menu ready for the market crowd.",
-    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Chestnut+Square+Historic+Park+McKinney+TX",
-  },
-  {
-    id: 2,
-    month: "JUL",
-    day: "18",
-    dayOfWeek: "Friday",
-    title: "Food Truck Friday at TUPPS Brewery",
-    location: "TUPPS Brewery, McKinney, TX",
-    time: "5:00 PM - 10:00 PM",
-    description: "Great beer and great food. We're pairing our sizzling shawarma with TUPPS' best brews. The perfect start to your weekend!",
-    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=TUPPS+Brewery+McKinney+TX",
-  },
-  {
-    id: 3,
-    month: "JUL",
-    day: "26",
-    dayOfWeek: "Saturday",
-    title: "Hub 121 Food Truck Rally",
-    location: "Hub 121, McKinney, TX",
-    time: "11:00 AM - 9:00 PM",
-    description: "Join us for an all-day food truck festival! We'll be serving up our full menu alongside live music and family fun.",
-    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Hub+121+McKinney+TX",
-  },
-    {
-    id: 4,
-    month: "AUG",
-    day: "02",
-    dayOfWeek: "Saturday",
-    title: "Downtown McKinney Arts & Music Festival",
-    location: "Historic Downtown McKinney Square",
-    time: "10:00 AM - 8:00 PM",
-    description: "Explore art, listen to live bands, and enjoy the best street food in town. Find our truck near the main stage!",
-    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Historic+Downtown+McKinney+Square",
-  },
+ 
 ];
 
 export default function EventsPage() {

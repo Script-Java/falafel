@@ -9,14 +9,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Navigation links for the overlay menu
   const navLinks = [
     { title: "Menu", href: "/menu" },
     { title: "Events", href: "/events" },
     { title: "Gallery", href: "/gallery" },
   ];
 
-  // Effect to detect scroll and change navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -25,14 +23,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Effect to prevent body scroll when the overlay menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
+    document.body.style.overflow = menuOpen ? "hidden" : "unset";
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [menuOpen]);
-
 
   return (
     <>
@@ -42,31 +38,57 @@ export default function Navbar() {
           isScrolled ? "bg-black shadow-lg" : "bg-transparent"
         }`}
       >
-        <div className="navbar max-w-screen-xl mx-auto">
+        <div className="navbar max-w-screen-xl mx-auto px-4">
           {/* Logo */}
           <div className="navbar-start">
-            <Link href="/" className="btn btn-primary h-auto p-0 hover:bg-transparent">
-              {/* Smaller logo for mobile screens */}
-              <Image src={logo} alt="Falafel & Fin Logo" width={100} className="lg:hidden" style={{ objectFit: 'contain' }} priority />
-              {/* Larger logo for desktop screens */}
-              <Image src={logo} alt="Falafel & Fin Food Truck Logo" width={140} className="hidden lg:block" style={{ objectFit: 'contain' }} priority />
+            <Link
+              href="/"
+              className="btn btn-primary h-auto p-0 hover:bg-transparent"
+            >
+              <Image
+                src={logo}
+                alt="Falafel & Fin Logo"
+                width={90}
+                className="lg:hidden"
+                style={{ objectFit: "contain" }}
+                priority
+              />
+              <Image
+                src={logo}
+                alt="Falafel & Fin Food Truck Logo"
+                width={130}
+                className="hidden lg:block"
+                style={{ objectFit: "contain" }}
+                priority
+              />
             </Link>
           </div>
 
           {/* Menu Icon and Hire Us Button */}
           <div className="navbar-end">
             <Link href="/hire" className="hidden sm:inline-flex">
-                <button className="btn btn-primary bg-yellow-400 text-black hover:bg-yellow-500 border-none normal-case mr-2">
+              <button className="btn btn-primary bg-yellow-400 text-black hover:bg-yellow-500 border-none normal-case mr-2">
                 Hire Us
-                </button>
+              </button>
             </Link>
             <button
               onClick={() => setMenuOpen(true)}
               className="btn btn-primary btn-circle"
               aria-label="Open menu"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>
@@ -82,39 +104,49 @@ export default function Navbar() {
         {/* Close Button */}
         <button
           onClick={() => setMenuOpen(false)}
-          className="btn btn-ghost btn-circle absolute top-5 right-5 text-white"
+          className="btn btn-ghost btn-circle absolute top-4 right-4 text-white"
           aria-label="Close menu"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
-        
+
         {/* Navigation Links */}
-        <div className="text-center">
-            <ul className="space-y-8">
-                {navLinks.map((link) => (
-                    <li key={link.href}>
-                        <Link 
-                            href={link.href} 
-                            onClick={() => setMenuOpen(false)}
-                            className="text-white text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
-                        >
-                            {link.title}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-             {/* The "Hire Us" button is now also in the main nav links for consistency */}
-            <li className="list-none mt-8">
-                <Link 
-                    href="/hire" 
-                    onClick={() => setMenuOpen(false)}
-                    className="text-white text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
+        <div className="text-center px-4">
+          <ul className="space-y-6 sm:space-y-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-white text-3xl sm:text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
                 >
-                    Hire Us
+                  {link.title}
                 </Link>
-            </li>
+              </li>
+            ))}
+          </ul>
+          <li className="list-none mt-6 sm:mt-10">
+            <Link
+              href="/hire"
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-3xl sm:text-4xl font-bold uppercase tracking-widest transition-colors duration-300 hover:text-yellow-400"
+            >
+              Hire Us
+            </Link>
+          </li>
         </div>
       </div>
     </>

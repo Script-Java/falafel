@@ -31,7 +31,7 @@ export default function OurStorySection() {
             </h2>
             
             <p className="text-lg mt-6 text-base-content/80">
-              Welcome to Falafel & Fin! We're not just another food truck; we're a family-run passion project right here in McKinney. It all started with a dream to share the authentic Mediterranean recipes we grew up loving. For us, it's about more than just food—it's about community, freshness, and serving you a meal that we're truly proud of.
+              Welcome to Falafel & Fin! We're not just another food truck; we're a family-run passion project right here in Frisco. It all started with a dream to share the authentic Mediterranean recipes we grew up loving. For us, it's about more than just food—it's about community, freshness, and serving you a meal that we're truly proud of.
             </p>
 
             {/* Core Values Section */}
@@ -51,7 +51,7 @@ export default function OurStorySection() {
                 </div>
                 <div>
                   <h4 className="font-bold text-xl">Locally Owned</h4>
-                  <p className="text-base-content/70">Proudly serving our McKinney neighbors.</p>
+                  <p className="text-base-content/70">Proudly serving our Frisco neighbors.</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">

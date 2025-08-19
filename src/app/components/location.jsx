@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { FaMapMarkerAlt, FaClock, FaCalendarAlt } from 'react-icons/fa';
 
+
 export default function LocationSection() {
   // --- DYNAMIC DATA ---
   // In a real app, you'd fetch this from a CMS or API.
   const locationData = {
     isOpen: true, // Change this to `false` to see the "CLOSED" state
-    date: "Wednesday, July 9th",
-    address: "7701 Stacy Rd, McKinney, TX",
-    hours: "11:00 AM - 8:00 PM",
-    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=7701+Stacy+Rd+McKinney+TX",
-    mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3341.523851528657!2d-96.7247223848098!3d33.1221189808698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c176e03820a4d%3A0xe21289294452f15!2s7701%20Stacy%20Rd%2C%20McKinney%2C%20TX%2075070!5e0!3m2!1sen!2sus!4v1625884878432!5m2!1sen!2sus",
+    date: new Date().toLocaleDateString(), // Use today's date
+    address: "8780 Preston Trace, Frisco, TX",
+    hours: "2:00 PM - 11:00 PM",
+    googleMapsLink: "https://www.google.com/maps/search/?api=1&query=8780+Preston+Trace%2C+Frisco%2C+TX",
+    mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3341.523851528657!2d-96.7247223848098!3d33.1221189808698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c176e03820a4d%3A0xe21289294452f15!2s8780%20Preston%20Trace%2C%20Frisco%2C%20TX!5e0!3m2!1sen!2sus!4v1625884878432!5m2!1sen!2sus",
   };
 
   return (
